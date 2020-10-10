@@ -3,7 +3,7 @@
     {{ message }}
     <!-- <p>To add a new Employee: <button type="button" onclick="location.href='https://localhost-sheweta-sabhnani-1.paiza-user-free.cloud:8000/'">New</button> -->
 <!--     </p> -->
-<a href="https://google.com" class="button">Go to Google</a>
+<a href="/person/create" class="button">New</a>
 	<table>
     <tr>
     <th>Firstname</th>
@@ -15,8 +15,8 @@
     <td>{{ data.firstname }}</td>
     <td>{{ data.lastname }}</td>
     <td>{{ data.email }}</td>
-     <td><button type="button">Update</button></td>
-      <td><button type="button">Delete</button></td>
+     <td><a href="/person/update" class="button">Update</a></td>
+      <td><a href="/person/delete/{{ data.id }} class="button">Delete</a></td>
   </tr>
 
 	{% endfor %} 
