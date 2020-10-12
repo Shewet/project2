@@ -15,16 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
+
 import employee.views
 from employee.views import PersonView,PersonCreate,PersonUpdate,PersonDelete
 import calc.urls
+import travello.urls
 # import calc.views
 # from calc.views import home
+print( static(settings.STATIC_URL, document_root=settings.STATIC_ROOT))
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(calc.urls)),
+    path('calc/', include(calc.urls)),
+    path('', include(travello.urls)),
     path('person/', PersonView, name='Person'),
     path('person/create/', PersonCreate, name='Create Person'),
     path('person/update/<id>', PersonUpdate, name='Update Person'), 
     path('person/delete/<id>', PersonDelete, name='Delete Person'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
